@@ -19,6 +19,7 @@ public final class Main extends JavaPlugin {
         // Plugin startup logic
         INSTANCE = this;
         getServer().getMessenger().registerOutgoingPluginChannel(INSTANCE, "BungeeCord");
+        Bukkit.getPluginManager().registerEvents(new Login(), INSTANCE);
 
         registerCommand("lobby", new Lobby());
         registerCommand("join", new Join());
