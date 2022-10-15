@@ -13,8 +13,9 @@ public class Join implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if (sender instanceof Player player) {
+        if (sender instanceof Player) {
             if (args.length == 1) {
+                Player player = (Player) sender;
                 player.sendMessage("§7Téléportation sur le serveur " + args[0] + "...");
                 ByteArrayDataOutput out = ByteStreams.newDataOutput();
                 out.writeUTF("Connect");
@@ -23,7 +24,7 @@ public class Join implements CommandExecutor {
                 return true;
             }
             else {
-                player.sendMessage("§cVous devez spécifier un serveur !");
+                sender.sendMessage("§cUtilisation: /join <serveur>");
                 return false;
             }
         }
