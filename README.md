@@ -6,7 +6,9 @@ Plugin that manages all functions in Efrei Craft's Hub.
 
 ## Permissions
 
-| Permission      | Description                                |
-|-----------------|--------------------------------------------|
-| `eclobby.lobby` | Allows the player to use `/lobby` command. |
-| `eclobby.join`  | Allows the player to use `/join` command.  |
+| Permission      | Description                                      |
+|-----------------|--------------------------------------------------|
+| `eclobby.lobby` | Permet au joueur d'utiliser la command `/lobby`. |
+| `eclobby.join`  | Permet au joueur d'utiliser la command `/join`.  |
+| `eclobby.fly`   | Permet au joueur de voler.                       |
+| `eclobby.menu`  | Permet au joueur d'utiliser le menu.             |

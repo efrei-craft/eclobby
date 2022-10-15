@@ -5,6 +5,7 @@ api-version: 1.19
 authors: [ DocSystem ]
 description: Efrei Craft Lobby Plugin
 website: https://github.com/efrei-craft/eclobby
+
 commands:
   lobby:
     description: Vous téléporte au spawn
@@ -23,3 +24,6 @@ permissions:
     description: Permet d'utiliser le /lobby
   eclobby.join:
     description: Permet d'utiliser le /join
+  eclobby.fly:
+    description: Permet de voler
+  eclobby.menu:
