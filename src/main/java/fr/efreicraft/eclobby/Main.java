@@ -1,5 +1,8 @@
 package fr.efreicraft.eclobby;
 
+import com.google.common.io.ByteArrayDataOutput;
+import com.google.common.io.ByteStreams;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import fr.efreicraft.eclobby.commands.*;
 import org.bukkit.Bukkit;
@@ -29,5 +32,12 @@ public final class Main extends JavaPlugin {
 
     void registerCommand(String command, CommandExecutor executor) {
         Objects.requireNonNull(Bukkit.getPluginCommand(command)).setExecutor(executor);
+    }
+
+    public static void sendPlayerToServer(Player player, String server) {
+        ByteArrayDataOutput out = ByteStreams.newDataOutput();
+        out.writeUTF("Connect");
+        out.writeUTF(server);
+        player.sendPluginMessage(INSTANCE, "BungeeCord", out.toByteArray());
     }
 }

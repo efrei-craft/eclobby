@@ -1,7 +1,5 @@
 package fr.efreicraft.eclobby.commands;
 
-import com.google.common.io.ByteArrayDataOutput;
-import com.google.common.io.ByteStreams;
 import fr.efreicraft.eclobby.Main;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -17,10 +15,7 @@ public class Join implements CommandExecutor {
             if (args.length == 1) {
                 Player player = (Player) sender;
                 player.sendMessage("§7Téléportation sur le serveur " + args[0] + "...");
-                ByteArrayDataOutput out = ByteStreams.newDataOutput();
-                out.writeUTF("Connect");
-                out.writeUTF(args[0]);
-                player.sendPluginMessage(Main.getPlugin(Main.class), "BungeeCord", out.toByteArray());
+                Main.sendPlayerToServer(player, args[0]);
                 return true;
             }
             else {
