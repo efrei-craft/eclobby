@@ -15,6 +15,7 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         INSTANCE = this;
+        getServer().getMessenger().registerOutgoingPluginChannel(INSTANCE, "BungeeCord");
 
         registerCommand("lobby", new Lobby());
         registerCommand("join", new Join());
@@ -23,6 +24,7 @@ public final class Main extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        getServer().getMessenger().unregisterOutgoingPluginChannel(INSTANCE);
     }
 
     void registerCommand(String command, CommandExecutor executor) {
