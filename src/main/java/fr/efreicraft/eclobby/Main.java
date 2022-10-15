@@ -17,6 +17,7 @@ public final class Main extends JavaPlugin {
         INSTANCE = this;
 
         registerCommand("lobby", new Lobby());
+        registerCommand("join", new Join());
     }
 
     @Override

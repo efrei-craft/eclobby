@@ -9,3 +9,4 @@ Plugin that manages all functions in Efrei Craft's Hub.
 | Permission      | Description                                |
 |-----------------|--------------------------------------------|
 | `eclobby.lobby` | Allows the player to use `/lobby` command. |
+| `eclobby.join`  | Allows the player to use `/join` command.  |
