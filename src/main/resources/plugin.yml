@@ -2,6 +2,6 @@ name: Eclobby
 version: '${version}'
 main: fr.efreicraft.eclobby.Eclobby
 api-version: 1.19
-authors: [DocSystem]
+authors: [ DocSystem ]
 description: Efrei Craft Lobby Plugin
 website: https://github.com/efrei-craft/eclobby
