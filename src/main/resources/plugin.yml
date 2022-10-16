@@ -1,4 +1,4 @@
-name: Eclobby
+name: ECLobby
 version: '${version}'
 main: fr.efreicraft.eclobby.Main
 api-version: 1.19
