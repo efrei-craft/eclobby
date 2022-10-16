@@ -6,7 +6,7 @@ authors: [ DocSystem ]
 description: Efrei Craft Lobby Plugin
 website: https://github.com/efrei-craft/eclobby
 
-depend: # load ECATUP before eclobby
+loadbefore: # load eclobby before ECATUP
   - ECATUP
 
 commands:
