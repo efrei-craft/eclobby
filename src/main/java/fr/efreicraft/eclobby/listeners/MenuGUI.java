@@ -94,6 +94,22 @@ public class MenuGUI implements Listener {
         final Player p = (Player) e.getWhoClicked();
 
         // Using slots click is the best option for your inventory click's
-        p.sendMessage("You clicked at slot " + e.getRawSlot());
+        // p.sendMessage("You clicked at slot " + e.getRawSlot());
+
+        switch (e.getRawSlot()) {
+            case 9 -> p.performCommand("profile");
+            case 27 -> {
+                p.performCommand("lobby");
+                p.closeInventory();
+            }
+            case 12 -> {
+                p.performCommand("join vanilla");
+                p.closeInventory();
+            }
+            case 13 -> {
+                p.performCommand("join modded");
+                p.closeInventory();
+            }
+        }
     }
 }
