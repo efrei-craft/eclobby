@@ -6,6 +6,9 @@ authors: [ DocSystem ]
 description: Efrei Craft Lobby Plugin
 website: https://github.com/efrei-craft/eclobby
 
+depend: # load ECATUP before eclobby
+  - ECATUP
+
 commands:
   lobby:
     description: Vous téléporte au spawn
