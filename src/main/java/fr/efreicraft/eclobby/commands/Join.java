@@ -14,12 +14,15 @@ public class Join implements CommandExecutor {
         if (sender instanceof Player) {
             if (args.length == 1) {
                 Player player = (Player) sender;
-                player.sendMessage("§7Téléportation sur le serveur " + args[0] + "...");
-                Main.sendPlayerToServer(player, args[0]);
+                player.sendMessage("§7Vous allez rejoindre " + args[0] + "...");
+                switch (args[0]) {
+                    case "vanilla" -> Main.sendPlayerToServer(player, "vanillasurvival");
+                    case "modded" -> Main.sendPlayerToServer(player, "moddedsurvival");
+                }
                 return true;
             }
             else {
-                sender.sendMessage("§cUtilisation: /join <serveur>");
+                sender.sendMessage("§cUtilisation: /join <mode de jeu>");
                 return false;
             }
         }
