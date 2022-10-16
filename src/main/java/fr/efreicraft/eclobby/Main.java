@@ -24,6 +24,7 @@ public final class Main extends JavaPlugin {
 
         registerCommand("lobby", new Lobby());
         registerCommand("join", new Join());
+        registerCommand("menu", new Menu());
     }
 
     @Override

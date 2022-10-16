@@ -18,6 +18,11 @@ commands:
     usage: /join <serveur>
     permission: eclobby.join
     permission-message: Vous n'avez pas la permission d'utiliser cette commande.
+  menu:
+    description: Ouvre le menu
+    usage: /menu
+    permission: eclobby.menu
+    permission-message: Vous n'avez pas la permission d'utiliser cette commande.
 
 permissions:
   eclobby.lobby:
@@ -27,3 +32,4 @@ permissions:
   eclobby.fly:
     description: Permet de voler
   eclobby.menu:
+    description: Permet d'utiliser le /menu
