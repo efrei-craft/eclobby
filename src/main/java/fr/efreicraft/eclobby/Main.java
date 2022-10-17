@@ -2,6 +2,7 @@ package fr.efreicraft.eclobby;
 
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import fr.efreicraft.eclobby.commands.*;
@@ -30,6 +31,10 @@ public final class Main extends JavaPlugin {
         registerCommand("menu", new Menu());
         for (Player player : Bukkit.getOnlinePlayers()) {
             fr.efreicraft.eclobby.utils.HUDManager.setScoreboard(player);
+            Location loc = player.getLocation();
+            if (loc.getY() < -30) {
+                player.teleport(new Location(player.getWorld(), 0.5, 1, 0.5, 90, 0));
+            }
         }
     }
 
