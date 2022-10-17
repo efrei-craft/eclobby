@@ -26,6 +26,9 @@ public final class Main extends JavaPlugin {
         registerCommand("lobby", new Lobby());
         registerCommand("join", new Join());
         registerCommand("menu", new Menu());
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            fr.efreicraft.eclobby.utils.HUDManager.setScoreboard(player);
+        }
     }
 
     @Override

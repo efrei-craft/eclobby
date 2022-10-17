@@ -20,5 +20,8 @@ public class Login implements Listener {
             }
             player.teleport(new Location(player.getWorld(), 0.5, 1, 0.5, 90, 0));
         }, 1L);
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.INSTANCE, () -> {
+            fr.efreicraft.eclobby.utils.HUDManager.setScoreboard(player);
+        }, 0L, 20L);
     }
 }
