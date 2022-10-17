@@ -25,6 +25,7 @@ public final class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new GamemodeChange(), INSTANCE);
         Bukkit.getPluginManager().registerEvents(new Click(), INSTANCE);
         Bukkit.getPluginManager().registerEvents(new Damage(), INSTANCE);
+        Bukkit.getPluginManager().registerEvents(new TechZone(), INSTANCE);
 
         registerCommand("lobby", new Lobby());
         registerCommand("join", new Join());
