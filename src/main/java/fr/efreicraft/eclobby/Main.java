@@ -27,6 +27,7 @@ public final class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new Damage(), INSTANCE);
         Bukkit.getPluginManager().registerEvents(new TechZone(), INSTANCE);
         Bukkit.getPluginManager().registerEvents(new TapisRoulant(), INSTANCE);
+        Bukkit.getPluginManager().registerEvents(new AdminPortal(), INSTANCE);
 
         registerCommand("lobby", new Lobby());
         registerCommand("join", new Join());
