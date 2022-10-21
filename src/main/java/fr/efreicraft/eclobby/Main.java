@@ -2,6 +2,7 @@ package fr.efreicraft.eclobby;
 
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -56,5 +57,9 @@ public final class Main extends JavaPlugin {
         out.writeUTF("Connect");
         out.writeUTF(server);
         player.sendPluginMessage(INSTANCE, "BungeeCord", out.toByteArray());
+    }
+
+    public static String colorize(String msg) {
+        return ChatColor.translateAlternateColorCodes('&', msg);
     }
 }
