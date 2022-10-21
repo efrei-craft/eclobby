@@ -2,15 +2,22 @@ package fr.efreicraft.eclobby;
 
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 import fr.efreicraft.eclobby.commands.*;
 import fr.efreicraft.eclobby.listeners.*;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 
+import java.util.Collections;
 import java.util.Objects;
 
 public final class Main extends JavaPlugin {
@@ -21,7 +28,11 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         INSTANCE = this;
+
         getServer().getMessenger().registerOutgoingPluginChannel(INSTANCE, "BungeeCord");
+
+        setupBoussole();
+
         Bukkit.getPluginManager().registerEvents(new Login(), INSTANCE);
         Bukkit.getPluginManager().registerEvents(new GamemodeChange(), INSTANCE);
         Bukkit.getPluginManager().registerEvents(new Click(), INSTANCE);
@@ -57,6 +68,18 @@ public final class Main extends JavaPlugin {
         out.writeUTF("Connect");
         out.writeUTF(server);
         player.sendPluginMessage(INSTANCE, "BungeeCord", out.toByteArray());
+    }
+
+    void setupBoussole() {
+        var menuBoussole = new ItemStack(Material.COMPASS);
+
+        ItemMeta meta = menuBoussole.getItemMeta();
+
+        meta.displayName(Component.text("Menu", NamedTextColor.GREEN, TextDecoration.BOLD));
+        meta.lore(Collections.singletonList(Component.text(colorize("&a&lClic droit pour ouvrir le menu !"))));
+        menuBoussole.setItemMeta(meta);
+
+        Login.menuBoussole = menuBoussole;
     }
 
     public static String colorize(String msg) {
