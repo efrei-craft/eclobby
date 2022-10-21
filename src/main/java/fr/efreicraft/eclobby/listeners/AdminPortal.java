@@ -18,11 +18,18 @@ public class AdminPortal implements Listener {
         float yaw = loc.getYaw();
         float pitch = loc.getPitch();
         Vector velocity = event.getPlayer().getVelocity().clone();
-        if (x >= -42 && x <= -41 && y >= 52.0 && y <= 57.0 && z >= -0.7 && z <= 1.7) {
+        if (x >= -42 && x <= -41 && y >= 52 && y <= 57 && z >= -0.7 && z <= 1.7) {
             if (yaw >= 0 && yaw <= 180) {
                 yaw -= 180;
             }
             event.getPlayer().teleport(new Location(event.getPlayer().getWorld(), -12.5, y-1, 0.5, yaw, pitch));
+            INSTANCE.getServer().getScheduler().runTaskLater(INSTANCE, () -> event.getPlayer().setVelocity(velocity), 1L);
+        }
+        else if (x >= -12.6 && x <= -12 && y >= 51 && y <= 58 && z >= -0.7 && z <= 1.7) {
+            if (yaw >= -180 && yaw <= 0) {
+                yaw += 180;
+            }
+            event.getPlayer().teleport(new Location(event.getPlayer().getWorld(), -42.5, y+1, 0.5, yaw, pitch));
             INSTANCE.getServer().getScheduler().runTaskLater(INSTANCE, () -> event.getPlayer().setVelocity(velocity), 1L);
         }
     }
