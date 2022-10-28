@@ -2,10 +2,10 @@ package fr.efreicraft.eclobby;
 
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
+import fr.efreicraft.eclobby.utils.Utils;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -76,13 +76,10 @@ public final class Main extends JavaPlugin {
         ItemMeta meta = menuBoussole.getItemMeta();
 
         meta.displayName(Component.text("Menu", NamedTextColor.GREEN, TextDecoration.BOLD));
-        meta.lore(Collections.singletonList(Component.text(colorize("&a&lClic droit pour ouvrir le menu !"))));
+        meta.lore(Collections.singletonList(Component.text(Utils.colorize("&a&lClic droit pour ouvrir le menu !"))));
         menuBoussole.setItemMeta(meta);
 
         Login.menuBoussole = menuBoussole;
     }
 
-    public static String colorize(String msg) {
-        return ChatColor.translateAlternateColorCodes('&', msg);
-    }
 }
