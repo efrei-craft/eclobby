@@ -9,6 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public class Login implements Listener {
 
@@ -24,13 +25,20 @@ public class Login implements Listener {
             }
             player.teleport(new Location(player.getWorld(), 0.5, 1, 0.5, 90, 0));
         }, 1L);
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.INSTANCE, () -> {
-            fr.efreicraft.eclobby.utils.HUDManager.setScoreboard(player);
-            Location loc = player.getLocation();
-            if (loc.getY() < -30) {
-                player.teleport(new Location(player.getWorld(), 0.5, 1, 0.5, 90, 0));
+
+        BukkitRunnable runnable = new BukkitRunnable() {
+            @Override
+            public void run() {
+                fr.efreicraft.eclobby.utils.HUDManager.setScoreboard(player);
+                Location loc = player.getLocation();
+                if (loc.getY() < -30) {
+                    player.teleport(new Location(player.getWorld(), 0.5, 1, 0.5, 90, 0));
+                }
             }
-        }, 0L, 20L);
+        };
+        runnable.run();
+
+        runnable.runTaskTimer(Main.INSTANCE,0,20L);
         
         player.getInventory().setItem(0, menuBoussole);
     }
