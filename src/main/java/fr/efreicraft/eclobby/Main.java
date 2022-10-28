@@ -2,20 +2,22 @@ package fr.efreicraft.eclobby;
 
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
+import fr.efreicraft.eclobby.commands.Join;
+import fr.efreicraft.eclobby.commands.Lobby;
+import fr.efreicraft.eclobby.commands.Menu;
+import fr.efreicraft.eclobby.listeners.*;
 import fr.efreicraft.eclobby.utils.Utils;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
-import fr.efreicraft.eclobby.commands.*;
-import fr.efreicraft.eclobby.listeners.*;
-import org.bukkit.Bukkit;
-import org.bukkit.command.CommandExecutor;
 
 import java.util.Collections;
 import java.util.Objects;

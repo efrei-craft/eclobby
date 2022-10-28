@@ -1,6 +1,5 @@
 package fr.efreicraft.eclobby.listeners;
 
-import fr.efreicraft.eclobby.Main;
 import fr.efreicraft.eclobby.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
