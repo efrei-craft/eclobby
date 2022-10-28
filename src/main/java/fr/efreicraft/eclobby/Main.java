@@ -44,6 +44,7 @@ public final class Main extends JavaPlugin {
         registerCommand("lobby", new Lobby());
         registerCommand("join", new Join());
         registerCommand("menu", new Menu());
+
         for (Player player : Bukkit.getOnlinePlayers()) {
             fr.efreicraft.eclobby.utils.HUDManager.setScoreboard(player);
             Location loc = player.getLocation();
@@ -70,7 +71,7 @@ public final class Main extends JavaPlugin {
             INSTANCE.getLogger().info(player.getName() + " tried to join " + server + " but doesn't have permission to do so.");
             return;
         }
-        
+
         ByteArrayDataOutput out = ByteStreams.newDataOutput();
         out.writeUTF("Connect");
         out.writeUTF(server);
