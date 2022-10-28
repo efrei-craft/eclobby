@@ -2,11 +2,11 @@ name: ECLobby
 version: '${version}'
 main: fr.efreicraft.eclobby.Main
 api-version: 1.19
-authors: [ DocSystem ]
+authors: [ DocSystem, Niilyx ]
 description: Efrei Craft Lobby Plugin
 website: https://github.com/efrei-craft/eclobby
 
-loadbefore: # load eclobby before ECATUP
+depend: # load eclobby AFTER ECATUP
   - ECATUP
 
 commands:

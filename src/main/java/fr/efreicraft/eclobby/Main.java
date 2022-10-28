@@ -2,20 +2,22 @@ package fr.efreicraft.eclobby;
 
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
+import fr.efreicraft.eclobby.commands.Join;
+import fr.efreicraft.eclobby.commands.Lobby;
+import fr.efreicraft.eclobby.commands.Menu;
+import fr.efreicraft.eclobby.listeners.*;
+import fr.efreicraft.eclobby.utils.Utils;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
-import org.bukkit.ChatColor;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
-import fr.efreicraft.eclobby.commands.*;
-import fr.efreicraft.eclobby.listeners.*;
-import org.bukkit.Bukkit;
-import org.bukkit.command.CommandExecutor;
 
 import java.util.Collections;
 import java.util.Objects;
@@ -44,6 +46,7 @@ public final class Main extends JavaPlugin {
         registerCommand("lobby", new Lobby());
         registerCommand("join", new Join());
         registerCommand("menu", new Menu());
+
         for (Player player : Bukkit.getOnlinePlayers()) {
             fr.efreicraft.eclobby.utils.HUDManager.setScoreboard(player);
             Location loc = player.getLocation();
@@ -64,6 +67,13 @@ public final class Main extends JavaPlugin {
     }
 
     public static void sendPlayerToServer(Player player, String server) {
+        if (!player.hasPermission("server." + server.toLowerCase())) {
+            Component nope = Component.text("Vous ne pouvez pas aller sur ce serveur !").color(NamedTextColor.RED);
+            player.sendMessage(nope);
+            INSTANCE.getLogger().info(player.getName() + " tried to join " + server + " but doesn't have permission to do so.");
+            return;
+        }
+
         ByteArrayDataOutput out = ByteStreams.newDataOutput();
         out.writeUTF("Connect");
         out.writeUTF(server);
@@ -76,13 +86,10 @@ public final class Main extends JavaPlugin {
         ItemMeta meta = menuBoussole.getItemMeta();
 
         meta.displayName(Component.text("Menu", NamedTextColor.GREEN, TextDecoration.BOLD));
-        meta.lore(Collections.singletonList(Component.text(colorize("&a&lClic droit pour ouvrir le menu !"))));
+        meta.lore(Collections.singletonList(Component.text(Utils.colorize("&a&lClic droit pour ouvrir le menu !"))));
         menuBoussole.setItemMeta(meta);
 
         Login.menuBoussole = menuBoussole;
     }
 
-    public static String colorize(String msg) {
-        return ChatColor.translateAlternateColorCodes('&', msg);
-    }
 }

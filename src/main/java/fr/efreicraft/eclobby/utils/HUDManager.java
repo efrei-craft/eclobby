@@ -3,22 +3,20 @@ package fr.efreicraft.eclobby.utils;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.scoreboard.Objective;
-import org.bukkit.scoreboard.Score;
-import org.bukkit.scoreboard.Scoreboard;
-import org.bukkit.scoreboard.ScoreboardManager;
+import org.bukkit.scoreboard.*;
 
 public class HUDManager {
     public static void setScoreboard(Player player) {
         ScoreboardManager manager = Bukkit.getScoreboardManager();
-        player.setScoreboard(manager.getNewScoreboard());
+
         final Scoreboard board = manager.getNewScoreboard();
-        final Objective objective = board.registerNewObjective("efreicraft-" + player.getName(), "dummy",
+        final Objective objective = board.registerNewObjective("efreicraft-" + player.getName(), Criteria.DUMMY,
                 Component.text("      §e§lEFREI CRAFT     "));
         objective.setDisplaySlot(org.bukkit.scoreboard.DisplaySlot.SIDEBAR);
         Score score10 = objective.getScore("§r          ");
         score10.setScore(9);
-        Score score9 = objective.getScore("§7Votre rôle : " + player.getDisplayName().split("§l")[0].split("\\[")[0] + player.getDisplayName().split("\\[")[1].split("]")[0]);
+//        Score score9 = objective.getScore("§7Votre rôle : " + player.getDisplayName().split("§l")[0].split("\\[")[0] + player.getDisplayName().split("\\[")[1].split("]")[0]);
+        Score score9 = objective.getScore("§7Votre rôle : " + player.getDisplayName().replaceAll("§l|\\[|\\].*", ""));
         score9.setScore(8);
         Score score8 = objective.getScore("§r         ");
         score8.setScore(7);
