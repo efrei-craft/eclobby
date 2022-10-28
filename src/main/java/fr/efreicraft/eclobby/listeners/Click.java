@@ -26,7 +26,7 @@ public class Click implements Listener {
                     event.setCancelled(false);
             } else
                 event.setCancelled(true);
-        } else
+        }
         if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) { // If player is right-clicking
             if (event.getItem() != null) { // If item in player's hand is not null
                 if (event.getItem().getType() == org.bukkit.Material.COMPASS) { // If item in player's hand is a compass
