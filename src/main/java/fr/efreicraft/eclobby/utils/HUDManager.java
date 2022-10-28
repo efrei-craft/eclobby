@@ -15,7 +15,8 @@ public class HUDManager {
         objective.setDisplaySlot(org.bukkit.scoreboard.DisplaySlot.SIDEBAR);
         Score score10 = objective.getScore("§r          ");
         score10.setScore(9);
-        Score score9 = objective.getScore("§7Votre rôle : " + player.getDisplayName().split("§l")[0].split("\\[")[0] + player.getDisplayName().split("\\[")[1].split("]")[0]);
+//        Score score9 = objective.getScore("§7Votre rôle : " + player.getDisplayName().split("§l")[0].split("\\[")[0] + player.getDisplayName().split("\\[")[1].split("]")[0]);
+        Score score9 = objective.getScore("§7Votre rôle : " + player.getDisplayName().replaceAll("§l|\\[|\\]", ""));
         score9.setScore(8);
         Score score8 = objective.getScore("§r         ");
         score8.setScore(7);
