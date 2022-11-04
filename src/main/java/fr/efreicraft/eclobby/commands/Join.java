@@ -17,8 +17,8 @@ public class Join implements CommandExecutor {
                 Player player = (Player) sender;
                 player.sendMessage(ChatColor.GRAY + "Vous allez rejoindre " + args[0] + "...");
                 switch (args[0]) {
-                    case "vanilla" -> Main.sendPlayerToServer(player, "vanillasurvival");
-                    case "modded" -> Main.sendPlayerToServer(player, "moddedsurvival");
+                    case "vanilla" -> Main.sendPlayerToServer(player, "vanilla");
+                    case "modded" -> Main.sendPlayerToServer(player, "modded");
                 }
                 return true;
             }
