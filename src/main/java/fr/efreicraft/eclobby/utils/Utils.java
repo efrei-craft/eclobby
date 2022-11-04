@@ -24,6 +24,39 @@ public class Utils {
                  (inRange(z, corner1.getZ(), corner2.getZ()));
     }
 
+    public static boolean isInside(Location location, Location corner1, int dx, int dy, int dz) {
+        double x = location.getX();
+        double y = location.getY();
+        double z = location.getZ();
+
+        Location corner2 = new Location(corner1.getWorld(), corner1.getX() + dx, corner1.getY() + dy, corner1.getZ() + dz);
+
+        return (inRange(x, corner1.getX(), corner2.getX())) &&
+                (inRange(y, corner1.getY(), corner2.getY())) &&
+                 (inRange(z, corner1.getZ(), corner2.getZ()));
+    }
+    public static boolean isBlockInside(Location location, Location corner1, Location corner2) {
+        double x = location.getBlockX();
+        double y = location.getBlockY();
+        double z = location.getBlockZ();
+
+        return (inRange(x, corner1.getX(), corner2.getX())) &&
+                (inRange(y, corner1.getY(), corner2.getY())) &&
+                 (inRange(z, corner1.getZ(), corner2.getZ()));
+    }
+
+    public static boolean isBlockInside(Location location, Location corner1, int dx, int dy, int dz) {
+        double x = location.getBlockX();
+        double y = location.getBlockY();
+        double z = location.getBlockZ();
+
+        Location corner2 = new Location(corner1.getWorld(), corner1.getX() + dx, corner1.getY() + dy, corner1.getZ() + dz);
+
+        return (inRange(x, corner1.getX(), corner2.getX())) &&
+                (inRange(y, corner1.getY(), corner2.getY())) &&
+                 (inRange(z, corner1.getZ(), corner2.getZ()));
+    }
+
     // Dites moi dans quel monde ça existe pas cette fonction
     public static boolean inRange(double x, double a, double b) {
         return Math.min(a,b) <= x
