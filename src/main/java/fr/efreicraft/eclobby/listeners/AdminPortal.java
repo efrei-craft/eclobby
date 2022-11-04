@@ -1,13 +1,11 @@
 package fr.efreicraft.eclobby.listeners;
 
 import fr.efreicraft.eclobby.utils.Utils;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.event.player.PlayerPortalEvent;
 import org.bukkit.util.Vector;
 
 import static fr.efreicraft.eclobby.Main.INSTANCE;
