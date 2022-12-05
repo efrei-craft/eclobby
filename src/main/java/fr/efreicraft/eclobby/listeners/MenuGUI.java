@@ -109,6 +109,14 @@ public class MenuGUI implements Listener {
                 p.performCommand("join vanilla");
                 p.closeInventory();
             }
+            case 21 -> {
+                p.chat("/queue sumo");
+                p.closeInventory();
+            }
+            case 22 -> {
+                p.chat("/queue rush");
+                p.closeInventory();
+            }
         }
     }
 }
