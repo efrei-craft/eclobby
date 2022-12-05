@@ -32,6 +32,7 @@ public final class Main extends JavaPlugin {
         INSTANCE = this;
 
         getServer().getMessenger().registerOutgoingPluginChannel(INSTANCE, "BungeeCord");
+        getServer().getMessenger().registerOutgoingPluginChannel(INSTANCE, "servo:queue");
 
         setupBoussole();
 
@@ -78,6 +79,12 @@ public final class Main extends JavaPlugin {
         out.writeUTF("Connect");
         out.writeUTF(server);
         player.sendPluginMessage(INSTANCE, "BungeeCord", out.toByteArray());
+    }
+
+    public static void queuePlayer(Player player, String minigame) {
+        ByteArrayDataOutput out = ByteStreams.newDataOutput();
+        out.writeUTF(minigame);
+        player.sendPluginMessage(INSTANCE, "servo:queue", out.toByteArray());
     }
 
     void setupBoussole() {

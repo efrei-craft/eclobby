@@ -16,6 +16,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.List;
 
+import static fr.efreicraft.eclobby.Main.queuePlayer;
+
 public class MenuGUI implements Listener {
     private final Inventory inv;
     private Player player;
@@ -110,11 +112,11 @@ public class MenuGUI implements Listener {
                 p.closeInventory();
             }
             case 21 -> {
-                p.chat("/queue sumo");
+                queuePlayer(p, "Sumo");
                 p.closeInventory();
             }
             case 22 -> {
-                p.chat("/queue rush");
+                queuePlayer(p, "Rush");
                 p.closeInventory();
             }
         }
