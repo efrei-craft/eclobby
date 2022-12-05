@@ -54,8 +54,11 @@ public class MenuGUI implements Listener {
         /// NAV MENU (RIGHT SIDE)
         // Vanilla Server
         inv.setItem(12, createGuiItem(Material.GRASS_BLOCK, "§aSurvie Vanilla", "§7Cliquez pour rejoindre le serveur Vanilla"));
-        // Modded Server
-        inv.setItem(13, createGuiItem(Material.REDSTONE_BLOCK, "§cSurvie Moddée", "§7Cliquez pour rejoindre le serveur Moddé"));
+        // Mini-games
+        // Sumo
+        inv.setItem(21, createGuiItem(Material.SLIME_BALL, "§aSumo", "§7Cliquez pour rejoindre lancer une partie de Sumo"));
+        // Rush
+        inv.setItem(22, createGuiItem(Material.RED_BED, "§aRush", "§7Cliquez pour rejoindre lancer une partie de Rush"));
     }
 
     // Nice little method to create a gui item with a custom name, and description
@@ -104,10 +107,6 @@ public class MenuGUI implements Listener {
             }
             case 12 -> {
                 p.performCommand("join vanilla");
-                p.closeInventory();
-            }
-            case 13 -> {
-                p.performCommand("join modded");
                 p.closeInventory();
             }
         }
