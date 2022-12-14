@@ -4,6 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 
 public class Damage implements Listener {
@@ -21,5 +22,11 @@ public class Damage implements Listener {
             event.setCancelled(true);
             event.getEntity().setFoodLevel(20);
         }
+    }
+
+    @EventHandler
+    public void onExplosion(EntityExplodeEvent event) {
+        event.blockList().clear(); // c'est pas nécessaire :trollface:
+        event.setCancelled(true);
     }
 }
