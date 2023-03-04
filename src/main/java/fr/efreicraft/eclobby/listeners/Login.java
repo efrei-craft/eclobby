@@ -1,13 +1,16 @@
 package fr.efreicraft.eclobby.listeners;
 
+import fr.efreicraft.ecatup.players.Player;
+import fr.efreicraft.ecatup.players.events.ECPlayerJoined;
+import fr.efreicraft.ecatup.players.scoreboards.ScoreboardField;
 import fr.efreicraft.eclobby.Main;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -16,30 +19,54 @@ public class Login implements Listener {
     public static ItemStack menuBoussole;
 
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event) {
+    public void onPlayerJoin(ECPlayerJoined event) {
         Player player = event.getPlayer();
+        org.bukkit.entity.Player bukkitPlayer = player.entity();
+
+        player.resetPlayer();
+
         Bukkit.getScheduler().runTaskLater(Main.INSTANCE, () -> {
-            player.setGameMode(GameMode.ADVENTURE);
-            if (player.hasPermission("eclobby.fly")) {
-                player.setAllowFlight(true);
+            bukkitPlayer.setGameMode(GameMode.ADVENTURE);
+            if (bukkitPlayer.hasPermission("eclobby.fly")) {
+                bukkitPlayer.setAllowFlight(true);
             }
-            player.teleport(new Location(player.getWorld(), 0.5, 1, 0.5, 90, 0));
+            bukkitPlayer.teleport(new Location(bukkitPlayer.getWorld(), 0.5, 1, 0.5, 90, 0));
         }, 1L);
+
+        setupScoreboard(player);
 
         BukkitRunnable runnable = new BukkitRunnable() {
             @Override
             public void run() {
-                fr.efreicraft.eclobby.utils.HUDManager.setScoreboard(player);
-                Location loc = player.getLocation();
+                Location loc = bukkitPlayer.getLocation();
                 if (loc.getY() < -30) {
-                    player.teleport(new Location(player.getWorld(), 0.5, 1, 0.5, 90, 0));
+                    bukkitPlayer.teleport(new Location(bukkitPlayer.getWorld(), 0.5, 1, 0.5, 90, 0));
                 }
             }
         };
         runnable.run();
 
         runnable.runTaskTimer(Main.INSTANCE,0,20L);
-        
-        player.getInventory().setItem(0, menuBoussole);
+
+        bukkitPlayer.getInventory().setItem(0, menuBoussole);
+    }
+
+    public void setupScoreboard(Player player) {
+        player.getBoard().clearFields();
+
+        player.getBoard().setVisibility(true);
+
+        player.getBoard().setTitle("&e&lEFREI CRAFT");
+
+        player.getBoard().setField(
+                1,
+                new ScoreboardField(
+                        "&7Rang:",
+                        true,
+                        player1 -> {
+                            return player1.getAnimusPlayer().getPermGroups().get(0).getColor() + player1.getAnimusPlayer().getPermGroups().get(0).getName();
+                        }
+                )
+        );
     }
 }

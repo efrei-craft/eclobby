@@ -21,6 +21,10 @@ repositories {
 
 dependencies {
     compileOnly 'io.papermc.paper:paper-api:1.19.2-R0.1-SNAPSHOT'
+
+    compileOnly files("../AnimusClient/swagger/code/")
+    compileOnly "fr.efreicraft:AnimusClient"
+    compileOnly "fr.efreicraft:ECATUP"
 }
 
 def targetJavaVersion = 17
@@ -46,4 +50,15 @@ processResources {
     filesMatching('plugin.yml') {
         expand props
     }
+}
+
+configurations {
+    jar.archiveName = rootProject.name + ".jar"
+}
+
+task devBuildDockerImage(type: Exec) {
+    dependsOn build
+
+    workingDir '../'
+    commandLine 'docker', 'build', '-t', 'dev.efrei-craft/acp/templates/lobby', '-f', 'eclobby/dev/Dockerfile', '.'
 }
