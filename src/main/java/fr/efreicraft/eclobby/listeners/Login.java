@@ -3,6 +3,7 @@ package fr.efreicraft.eclobby.listeners;
 import fr.efreicraft.ecatup.players.Player;
 import fr.efreicraft.ecatup.players.events.ECPlayerJoined;
 import fr.efreicraft.ecatup.players.scoreboards.ScoreboardField;
+import fr.efreicraft.ecatup.utils.MessageUtils;
 import fr.efreicraft.eclobby.Main;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Bukkit;
@@ -47,6 +48,12 @@ public class Login implements Listener {
         runnable.run();
 
         runnable.runTaskTimer(Main.INSTANCE,0,20L);
+
+        if(player.getAnimusPlayer().getPermGroups().get(0).getPriority().intValue() > 0) {
+            MessageUtils.broadcastMessage("&7" + player.getChatName() + " &7a rejoint le serveur !");
+        }
+
+        MessageUtils.sendMessage(bukkitPlayer, "\n&7Bienvenue sur &e&lEFREI CRAFT&7, " + player.getChatName() + "&7 !\nOuvre ta boussole pour commencer à jouer !\n");
 
         bukkitPlayer.getInventory().setItem(0, menuBoussole);
     }
