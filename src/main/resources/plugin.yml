@@ -1,8 +1,8 @@
 name: ECLobby
 version: '${version}'
-main: fr.efreicraft.eclobby.Main
+main: fr.efreicraft.eclobby.ECLobby
 api-version: 1.19
-authors: [ DocSystem, Niilyx ]
+authors: [ DocSystem, Niilyx, JiveOff ]
 description: Efrei Craft Lobby Plugin
 website: https://github.com/efrei-craft/eclobby
 
