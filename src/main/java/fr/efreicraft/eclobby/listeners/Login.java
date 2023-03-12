@@ -8,8 +8,10 @@ import fr.efreicraft.eclobby.interfaces.PlayerSetup;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -54,5 +56,10 @@ public class Login implements Listener {
         }
 
         MessageUtils.sendMessage(bukkitPlayer, "\n&7Bienvenue sur &e&lEFREI CRAFT&7, " + player.getChatName() + "&7 !\nOuvre ta boussole pour commencer à jouer !\n");
+    }
+
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent quit) {
+        quit.quitMessage(null);
     }
 }

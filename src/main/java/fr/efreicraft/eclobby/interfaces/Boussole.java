@@ -53,7 +53,6 @@ public class Boussole {
                             event -> {
                                 try {
                                     QueueService.addPlayerToQueue(player.entity().getUniqueId(), game.getName());
-                                    MessageUtils.sendMessage(player.entity(), MessageUtils.ChatPrefix.QUEUE, "&7Vous avez été &aajouté&7 à la file d'attente pour le jeu " + game.getColor() + game.getDisplayName() + "&7.");
                                     player.getPlayerMenus().getMenu("BOUSSOLE").close();
                                     PlayerSetup.inQueue.add(player.getAnimusPlayer().getUuid());
                                     PlayerSetup.setupMenus(player);

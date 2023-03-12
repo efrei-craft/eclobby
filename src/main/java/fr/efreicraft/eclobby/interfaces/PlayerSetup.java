@@ -72,7 +72,6 @@ public class PlayerSetup {
                             if(inQueue.contains(player.getAnimusPlayer().getUuid())) {
                                 try {
                                     QueueService.removePlayerFromQueue(player.entity().getUniqueId());
-                                    MessageUtils.sendMessage(player.entity(), MessageUtils.ChatPrefix.QUEUE, "&7Vous avez &cquitté&7 la file d'attente.");
                                 } catch (ApiException e) {
                                     e.printStackTrace();
                                     MessageUtils.sendMessage(player.entity(), MessageUtils.ChatPrefix.QUEUE, "&cUne erreur est survenue lors de ta suppression de la file d'attente.");
