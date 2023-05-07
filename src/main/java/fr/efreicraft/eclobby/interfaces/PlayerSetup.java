@@ -30,9 +30,7 @@ public class PlayerSetup {
                 new ScoreboardField(
                         "&7Rang:",
                         true,
-                        player1 -> {
-                            return player1.getAnimusPlayer().getPermGroups().get(0).getColor() + player1.getAnimusPlayer().getPermGroups().get(0).getName();
-                        }
+                        player1 -> player1.getAnimusPlayer().getPermGroups().get(0).getColor() + player1.getAnimusPlayer().getPermGroups().get(0).getName()
                 )
         );
 
@@ -41,9 +39,7 @@ public class PlayerSetup {
                 new ScoreboardField(
                         "&7Joueurs en ligne:",
                         true,
-                        player1 -> {
-                            return "&a" + PlayerCount.playerCount;
-                        }
+                        player1 -> "&a" + PlayerCount.playerCount
                 )
         );
     }
