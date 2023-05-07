@@ -1,5 +1,7 @@
 rootProject.name = 'eclobby'
 
-includeBuild("../ECATUP") {
-    name = "ecatup"
+if(!System.getenv("NEXUS_REPOSITORY")) {
+    includeBuild("../ECATUP") {
+        name = "ecatup"
+    }
 }
