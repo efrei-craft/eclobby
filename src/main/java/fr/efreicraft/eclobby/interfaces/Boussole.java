@@ -1,11 +1,9 @@
 package fr.efreicraft.eclobby.interfaces;
 
-import fr.efreicraft.animus.endpoints.GameService;
-import fr.efreicraft.animus.endpoints.PlayerService;
 import fr.efreicraft.animus.endpoints.QueueService;
+import fr.efreicraft.animus.endpoints.ServerService;
 import fr.efreicraft.animus.invoker.ApiException;
 import fr.efreicraft.animus.models.Game;
-import fr.efreicraft.animus.models.GameServer;
 import fr.efreicraft.ecatup.players.ECPlayer;
 import fr.efreicraft.ecatup.players.menus.ChestMenu;
 import fr.efreicraft.ecatup.players.menus.ItemStackMenuItem;
@@ -65,6 +63,38 @@ public class Boussole {
             if(currentSlot % 9 == 8) currentSlot += 5;
             else currentSlot++;
         }
+
+
+        // ======================= VANILLA =======================
+        items.add(
+                new ItemStackMenuItem(
+                        31,
+                        () -> {
+                            // FIXME: hardcodé.
+                            String description = "&7Une survie simple, comme vous l'aimez !";
+                            try {
+                                return new ItemStackMenuItem(
+                                        new ItemStack(Material.GRASS_BLOCK),
+                                        "&aVanilla",
+                                        "&7 \n&7" + description + "\n&7 \n&7Joueurs en ligne: &a" + ServerService.getServer(System.getenv("INFRASTRUCTURE_NAME") + ".vanilla").getPlayers().size() + "\n&7 \n&8» &6Clic droit pour rejoindre"
+                                );
+                            } catch (Exception e) {
+                                return new ItemStackMenuItem(
+                                        new ItemStack(Material.PODZOL),
+                                        "&4Vanilla",
+                                        "&7 \n&cOups ! On n'arrive pas à communiquer avec le vanilla..."
+                                );
+                            }
+                        },
+                        event -> {
+                            try {
+                                ServerService.transferPlayer(System.getenv("INFRASTRUCTURE_NAME") + ".vanilla", player.entity().getUniqueId().toString());
+                            } catch (Exception e) {
+                                MessageUtils.sendMessage(player.entity(), "&cUne erreur est survenue lors de ton transfert vers le serveur Vanilla.");
+                            }
+                        }
+                )
+        );
 
         player.getPlayerMenus().setMenu(
                 "BOUSSOLE",
