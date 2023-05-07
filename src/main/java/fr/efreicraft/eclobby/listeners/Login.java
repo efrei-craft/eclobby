@@ -8,7 +8,6 @@ import fr.efreicraft.eclobby.interfaces.PlayerSetup;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -18,6 +17,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class Login implements Listener {
 
     public static ItemStack menuBoussole;
+
+    private static final int DEATH_TP_BARRIER = -30;
 
     @EventHandler
     public void onPlayerJoin(ECPlayerJoined event) {
@@ -42,7 +43,7 @@ public class Login implements Listener {
             @Override
             public void run() {
                 Location loc = bukkitPlayer.getLocation();
-                if (loc.getY() < -30) {
+                if (loc.getY() < DEATH_TP_BARRIER) {
                     bukkitPlayer.teleport(new Location(bukkitPlayer.getWorld(), 0.5, 1, 0.5, 90, 0));
                 }
             }
