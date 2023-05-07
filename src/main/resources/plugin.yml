@@ -32,5 +32,7 @@ permissions:
     description: Permet d'utiliser le /lobby
   eclobby.join:
     description: Permet d'utiliser le /join
+  eclobby.fly:
+    description: Permet de voler
   eclobby.menu:
     description: Permet d'utiliser le /menu
