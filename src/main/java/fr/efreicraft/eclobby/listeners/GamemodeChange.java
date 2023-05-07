@@ -1,6 +1,6 @@
 package fr.efreicraft.eclobby.listeners;
 
-import fr.efreicraft.eclobby.Main;
+import fr.efreicraft.eclobby.ECLobby;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,7 +11,7 @@ public class GamemodeChange implements Listener {
     public void onGamemodeChange(PlayerGameModeChangeEvent event) {
         boolean isPlayerFlying = event.getPlayer().isFlying();
         if (event.getPlayer().hasPermission("eclobby.fly")) {
-            Bukkit.getScheduler().runTaskLater(Main.INSTANCE, () -> {
+            Bukkit.getScheduler().runTaskLater(ECLobby.INSTANCE, () -> {
                 event.getPlayer().setAllowFlight(true);
                 event.getPlayer().setFlying(isPlayerFlying);
             }, 1L);
