@@ -8,7 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.util.Vector;
 
-import static fr.efreicraft.eclobby.Main.INSTANCE;
+import static fr.efreicraft.eclobby.ECLobby.INSTANCE;
 
 public class AdminPortal implements Listener {
 

@@ -27,17 +27,6 @@ public class Click implements Listener {
             } else
                 event.setCancelled(true);
         }
-        if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) { // If player is right-clicking
-            if (event.getItem() != null) { // If item in player's hand is not null
-                if (event.getItem().getType() == org.bukkit.Material.COMPASS) { // If item in player's hand is a compass
-                    // Cancel the event and open the menu
-                    event.setCancelled(true);
-                    MenuGUI menu = new MenuGUI();
-                    Bukkit.getPluginManager().registerEvents(menu, fr.efreicraft.eclobby.Main.INSTANCE);
-                    menu.openInventory(event.getPlayer());
-                }
-            }
-        }
     }
 
     @EventHandler
