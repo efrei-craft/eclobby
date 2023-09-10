@@ -71,7 +71,7 @@ public class Boussole {
                         31,
                         () -> {
                             // FIXME: hardcodé.
-                            String description = "&7Une survie simple, comme vous l'aimez !";
+                            String description = "&7Une survie simple, comme vous l'aimez !\n\n&c&lFermeture Vendredi 15/09 20h !\nUn reset pendant la Rézal sera effectué.";
                             try {
                                 return new ItemStackMenuItem(
                                         new ItemStack(Material.GRASS_BLOCK),
