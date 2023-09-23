@@ -78,7 +78,7 @@ public class Boussole {
                     31,
                     () -> {
                         // FIXME: hardcodé.
-                        String description = "&7Une survie simple, comme vous l'aimez !\n\n&c&lFermeture Vendredi 15/09 20h !\n&7Un reset pendant la Rézal sera effectué.";
+                        String description = "&7Une survie simple, comme vous l'aimez !\n\n&7Reservé aux joueurs en &c1.20.1+&7.";
                         try {
                             Server vanillaServer = ServerService.getServer(System.getenv("INFRASTRUCTURE_NAME") + ".vanilla");
 
