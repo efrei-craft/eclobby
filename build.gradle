@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'maven-publish'
+    id "org.sonarqube" version "4.4.1.3373"
 }
 
 group = 'fr.efreicraft'
@@ -103,4 +104,11 @@ task devBuildDockerImage(type: Exec) {
 
     workingDir '../'
     commandLine 'docker', 'build', '-t', 'dev.efrei-craft/acp/templates/lobby', '-f', 'eclobby/dev/Dockerfile', '.'
+}
+
+sonar {
+    properties {
+        property "sonar.projectKey", "efrei-craft_eclobby_AYxT1h4W0r1VQ1KDYPLh"
+        property "sonar.projectName", "eclobby"
+    }
 }
